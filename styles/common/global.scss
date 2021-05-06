@@ -1,0 +1,17 @@
+.alert {
+  font-size: 1.5rem;
+  line-height: 2.8rem;
+  padding: 1.6rem;
+  background-color: rgba(32, 33, 35, 1);
+  color: white;
+  position: fixed;
+  border-radius: 8px;
+  font-weight: 300;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1060;
+
+  a {
+    color: white;
+  }
+}
