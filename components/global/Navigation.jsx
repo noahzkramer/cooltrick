@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 const Navigation = ({data, className}) => {
-  const { navigationElements } = data.fields
+  const { navigationItem } = data.fields
 
   return (
     <nav className={className}>
       <ul>
         {
-          navigationElements.map(navItem => {
+          navigationItem.map(navItem => {
             let id = navItem.sys.id
             let name = navItem.fields.name
             let customLink = navItem.fields.customLink
@@ -19,7 +19,7 @@ const Navigation = ({data, className}) => {
 
             return (
               <li key={id}>
-                <Link href={link || ''}>
+                <Link href={"/" + link || ''}>
                   <a>{name}</a>
                 </Link>
               </li>

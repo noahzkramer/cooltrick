@@ -2,14 +2,21 @@ import { getAllPages, getPage, getNavigation } from "helpers"
 import BlockRenderer from 'components/helpers/BlockRenderer'
 import { Layout } from 'components/global'
 
-const Page = ({ page, preview, navigationData }) => {
+const Page = ({ page, preview, layoutData }) => {
   // iterable components
-  const blocks = page.fields.content
+  const { content, topContent } = page.fields
 
   return (
-    <Layout preview={preview} navigationData={navigationData}>
-      <h1>{page.fields.title}</h1>
-      { blocks.map(block => 
+    <Layout preview={preview} layoutData={layoutData}>
+      <section className="bg-gradient-to-b from-dark to-light pb-20">
+        { topContent.map(block => 
+            <BlockRenderer 
+              key={block.sys.id} 
+              block={block}
+            />
+        )}
+      </section>
+      { content.map(block => 
           <BlockRenderer 
             key={block.sys.id} 
             block={block}
@@ -36,10 +43,19 @@ export async function getStaticProps({ params, preview = false }) {
     slug: params.slug,
   }, preview)
 
-  const navigationData = await getNavigation({ 'fields.title': 'Main Navigation' })
+
+  // get global data
+  const navigation = await getNavigation({ 
+    'fields.name': 'Primary' 
+  })
+
+  const layoutData = {
+    navigation,
+    // footer
+  }
 
   return { 
-    props: { page, preview, navigationData } 
+    props: { page, preview, layoutData } 
   }
 }
 

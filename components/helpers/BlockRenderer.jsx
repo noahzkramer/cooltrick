@@ -1,7 +1,7 @@
 import { ComponentContentTypes } from 'lib/constants'
 
-import { LandingHero } from "components/landing"
-import { Split } from "components/global"
+import { ContentList, Hero, Split } from "components/global"
+import { Standard } from 'components/sections'
 
 const BlockRenderer = ({ block }) => {
   // array style blocks
@@ -27,6 +27,7 @@ const BlockRenderer = ({ block }) => {
 
   const componentProps = {
     ...block,
+    id: id,
     parent: block.parent,
   };
 
@@ -35,7 +36,9 @@ const BlockRenderer = ({ block }) => {
 
 // map the components to constants
 const ContentTypeMap = {
-  [ComponentContentTypes.LandingHero]: LandingHero,
+  [ComponentContentTypes.Hero]: Hero,
+  [ComponentContentTypes.Standard]: Standard,
+  [ComponentContentTypes.ContentList]: ContentList,
   [ComponentContentTypes.Split]: Split,
 };
 

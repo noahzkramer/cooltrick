@@ -15,3 +15,15 @@
     color: white;
   }
 }
+
+.top-section {
+  background: linear-gradient(to top, #12181D, #050505);
+}
+
+p:empty {
+  display: none;
+}
+
+header + .content-list {
+  margin-top: 7.5rem;
+}

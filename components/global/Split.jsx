@@ -1,6 +1,6 @@
 const Split = () => {
   return (
-    <div>Hey</div>
+    <div>Split</div>
   )
 }
 

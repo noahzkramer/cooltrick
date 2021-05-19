@@ -13,7 +13,6 @@ const Header = ({className, navigationData}) => {
 
 export default styled(Header)`
   position: fixed;
-  background: rgba(0, 0, 0, 0.3);
   left: 0;
   right: 0;
   padding: 4.25rem 6.25rem;

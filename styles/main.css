@@ -1,0 +1,24 @@
+:root {
+  --color-primary-dark: #050505;
+  --color-primary-light: #12181D;
+  --color-primary-med: #0A0D10;
+  --color-accent: #FFA0E0;
+  --color-grey: #8A8F98;
+}
+
+html {
+  @apply text-white;
+  @apply font-display;
+}
+
+p:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+.has-bg {
+  padding: 5rem 0;
+}
+
+.has-bg + .has-bg {
+  margin-top: -5rem;
+}

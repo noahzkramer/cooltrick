@@ -1,9 +1,45 @@
+body {
+  background-color: #060606;
+}
+
 body,
 button,
 html {
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: paralucent,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.2;
 }
 
 h1 {
-  margin: 0;
+  font-family: paralucent, sans-serif;
+  font-weight: 700;
+  font-size: 2.81rem;  
+}
+
+h2 {
+  font-size: 3.75rem;
+}
+
+h4 {
+  color: #FFA0E0;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.81rem;
+  letter-spacing: 0.14em;
+}
+
+h3,
+.bold-body {
+  color: #8A8F98;
+  white-space: break-spaces;
+  line-height: 1.25;
+  font-size: 1.25rem;
 }
