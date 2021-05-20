@@ -1,6 +1,6 @@
 // Dependencies
 import styled from 'styled-components'
-import { ContentListCard } from 'components/global'
+import ContentListCard from 'components/sections/ContentListCard'
 
 const ContentList = ({className, id, fields}) => {
   const {

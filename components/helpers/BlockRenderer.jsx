@@ -1,7 +1,5 @@
 import { ComponentContentTypes } from 'lib/constants'
-
-import { ContentList, Hero, Split } from "components/global"
-import { Standard } from 'components/sections'
+import { Hero, Standard, ContentList, Split } from 'components/sections'
 
 const BlockRenderer = ({ block }) => {
   // array style blocks

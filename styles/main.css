@@ -15,8 +15,12 @@ p:not(:last-of-type) {
   margin-bottom: 15px;
 }
 
-.has-bg {
+.has-bg:not(.None) {
   padding: 5rem 0;
+}
+
+#top + .has-bg {
+  padding-top: 0 !important;
 }
 
 .has-bg + .has-bg {

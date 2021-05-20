@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types'
 import Image from 'next/image'
-import { PrimaryButton } from 'components/global'
+import { PrimaryButton, Socials } from 'components/global'
 import Link from 'next/link'
+import { camelSentence } from 'helpers'
 
 const Standard = ({className, fields}) => {
   const {
-    heading,
+    heading = '',
     body,
     ctaText,
     includeSocialMediaIcons = false,
@@ -16,9 +17,9 @@ const Standard = ({className, fields}) => {
   } = fields
 
   return (
-    <section className={`${className} section-spacing-lg has-bg ${backgroundColor}`}>
+    <section id={camelSentence(heading)} className={`${className} section-spacing-lg has-bg ${backgroundColor}`}>
       <div className="text-center container max-w-screen-sm">
-        <h2 className="mb-8">{heading}</h2>
+        {heading && <h2 className="mb-8">{heading}</h2>}
         { documentToReactComponents(body, {
           renderNode: {
             [BLOCKS.PARAGRAPH]: (node, children) => {
@@ -34,6 +35,12 @@ const Standard = ({className, fields}) => {
                 <PrimaryButton>{ctaText}</PrimaryButton> 
               </a>
             </Link>
+          </div>
+        )}
+
+        { includeSocialMediaIcons && (
+          <div className="mt-11">
+            <Socials />
           </div>
         )}
       </div>

@@ -55,6 +55,7 @@ module.exports = {
   variants: {
     extend: {
       flexDirection: ['odd, even'],
+      margin: ['last'],
     }
   },
   plugins: [
@@ -64,7 +65,7 @@ module.exports = {
       addBase({
         'h1': { 
           fontSize: theme('fontSize.3xl'), 
-          lineHeight: theme('lineHeight.none'),
+          lineHeight: theme('lineHeight.tight'),
           fontWeight: theme('fontWeight.black'),
         },
         'h2': { 
@@ -95,8 +96,9 @@ module.exports = {
       }),
       addUtilities({
         '.section-spacing-lg': {
-          'margin-top': '5rem',
-          'margin-bottom': '5rem'
+          'margin-top': '6rem',
+          'margin-bottom': '6rem',
+          'scroll-margin-top': '6rem'
         },
         '.section-spacing-sm': {
           'margin-top': '2rem',
