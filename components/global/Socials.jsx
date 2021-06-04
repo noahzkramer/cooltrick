@@ -9,7 +9,7 @@ const Socials = ({className}) => {
   const globals = useContext(GlobalContext);
 
   return (
-    <div className={`${className}`}>
+    <div className={`${className} socials`}>
       <ul className="flex space-x-10 justify-center">
       {
         globals.socials.map((social) => {
@@ -28,5 +28,12 @@ const Socials = ({className}) => {
 }
 
 export default styled(Socials)`
-  
+  li svg {
+    fill: white;
+    transition: fill 0.3s;
+  }
+
+  li:hover svg {
+    fill: var(--color-accent)
+  }
 `

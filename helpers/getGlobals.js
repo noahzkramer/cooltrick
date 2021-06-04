@@ -10,8 +10,6 @@ async function getGlobals(search, preview) {
   };
 
   const { items: [global] } = await client.getEntries(query);
-
-  console.log(global)
   
   return global || null;
 }

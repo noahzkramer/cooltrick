@@ -14,18 +14,18 @@ const Hero = ({className, fields}) => {
   } = fields
 
   return (
-    <header className={`${className} pt-44`}>
+    <header className={`${className} pt-32 md:pt-44`}>
       <div className="text-center container max-w-screen-md">
         <h4 className="text-accent pb-6">{subheader}</h4>
         <h1 className="pb-1">{primary_heading}</h1>
-        <h2 className="text-2xl pb-3">{secondary_header}</h2>
+        <h2 className="md:text-2xl pb-3">{secondary_header}</h2>
         { documentToReactComponents(body, {
           renderNode: {
             [BLOCKS.HEADING_2]: (node, children) => {
               return <h2 className="text-2xl">{children}</h2>
             },
             [BLOCKS.HEADING_3]: (node, children) => {
-              return <h3 className="text-grey max-w-screen-sm m-auto whitespace-pre-line">{children}</h3>
+              return <h3 className="text-grey max-w-screen-sm m-auto md:whitespace-pre-line">{children}</h3>
             }
           }
         }) }

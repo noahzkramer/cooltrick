@@ -2,10 +2,12 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 
-const Navigation = ({data, className}) => {
+const PrimaryNavigation = ({data, className}) => {
   const { navigationItem } = data.fields
+  const navRef = useRef([])
 
   const handleHash = (e, hashId) => {
     if (hashId) {
@@ -24,9 +26,25 @@ const Navigation = ({data, className}) => {
     }
   }
 
+  const handleMouseOver = () => {
+    navRef.current.map(el => el.style.opacity = 0.6)
+  }
+
+  const handleMouseLeave = () => {
+    navRef.current.map(el => el.style.opacity = 1)
+  }
+
+  const addRef = element => {
+    if (!element) return
+    navRef.current = [...navRef.current, element]
+  }
+
   return (
     <nav className={className}>
-      <ul className="flex items-center">
+      {/* FIX: hot refresh issue with refs */}
+      {navRef.current = []}
+
+      <ul className="flex items-center flex-col md:flex-row space-y-10 md:space-y-0">
         {
           navigationItem.map(navItem => {
             let id = navItem.sys.id,
@@ -41,7 +59,13 @@ const Navigation = ({data, className}) => {
             link = customLink || "/" + link
 
             return (
-              <li key={id} className={`mr-11 last:mr-0 text-tiny ${[...classes]}`}>
+              <li 
+                key={id} 
+                className={`md:mr-11 last:mr-0 text-xl md:text-tiny ${[...classes]}`}
+                ref={addRef}
+                onMouseOver={handleMouseOver} 
+                onMouseLeave={handleMouseLeave}
+              >
                 {
                   !openInNewWindow ? (
                     <Link href={`${link || ''}`}>
@@ -67,12 +91,25 @@ const Navigation = ({data, className}) => {
   )
 }
 
-export default styled(Navigation)`
+export default styled(PrimaryNavigation)`
   .styled-btn a {
     background-color: white;
     color: black;
     padding: 13px 38px;
     border-radius: 2px;
     box-shadow: 2px -2px 0px 0px #61CBDE, -2px 2px 0px 0px #FFA0E0;
+    font-size: 1rem;
+  }
+
+  a {
+    display: block;
+  }
+
+  li {
+    transition: opacity 0.3s;
+  }
+
+  li:hover {
+    opacity: 1 !important;
   }
 `

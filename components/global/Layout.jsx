@@ -5,15 +5,22 @@ import { createContext } from 'react'
 export const GlobalContext = createContext({})
 
 const Layout = ({children, preview, layoutData}) => {
+  const { globals } = layoutData
+
   const {
-    navigation = { fields: { navigationItem: [] } },
-    globals,
-    footer
-  } = layoutData
+    footerDisclaimer,
+    footerNavigation,
+    primaryNavigation
+  } = globals.fields
+
+  const footer = {
+    footerNavigation,
+    footerDisclaimer
+  }
 
   return (
     <GlobalContext.Provider value={globals.fields}>
-      <Header navigationData={navigation}/>
+      <Header navigationData={primaryNavigation}/>
       <main role="main">
         { preview && <Alert/> }
         { children }

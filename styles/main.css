@@ -3,12 +3,85 @@
   --color-primary-light: #12181D;
   --color-primary-med: #0A0D10;
   --color-accent: #FFA0E0;
+  --color-accent-hover: #FDBCE8;
   --color-grey: #8A8F98;
+  --color-faded: #858688;
 }
 
 html {
   @apply text-white;
   @apply font-display;
+}
+
+@layer base {
+  h1 { 
+    @apply text-xl;
+    @apply leading-tight;
+    @apply font-black;
+  }
+
+  @screen md {
+    h1 {
+      @apply text-3xl;
+    }
+  }
+
+  h2 {
+    @apply text-xl;
+    @apply leading-none;
+    @apply font-black;
+  }
+
+  @screen md {
+    h2 {
+      @apply text-4xl;
+    }
+  }
+
+  h3 {
+    @apply text-base;
+    @apply leading-tight;
+    @apply font-black;
+  }
+
+  @screen md {
+    h3 {
+      @apply text-lg;
+    }
+  }
+
+  h4 {
+    @apply text-xs;
+    @apply tracking-widest;
+    @apply font-semibold;
+    @apply font-smallHeader;
+
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  @screen md {
+    h4 {
+      @apply text-sm;
+    }
+  }
+
+  h5 {
+    @apply font-smallHeader;
+  }
+
+  p {
+    @apply leading-normal;
+    @apply text-tiny;
+
+    color: var(--color-grey);
+  }
+
+  @screen md {
+    p {
+      @apply text-base;
+    }
+  }
 }
 
 p:not(:last-of-type) {

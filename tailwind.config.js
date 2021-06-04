@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '15px',
+      padding: '2rem',
     },
     fontFamily: {
       display: ['paralucent', 'sans-serif'],
@@ -23,6 +23,13 @@ module.exports = {
       '2xl': '2.375rem', // 38px
       '3xl': '2.8rem', // 45px
       '4xl': '3.75rem', // 60px
+    },
+    screens: {
+      'sm': '680px',
+      'md': '798px',
+      'lg': '1054px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -41,14 +48,14 @@ module.exports = {
         light: 'var(--color-primary-light)',
         med: 'var(--color-primary-med)',
         accent: 'var(--color-accent)',
-        grey: 'var(--color-grey)'
+        accentHover: 'var(--color-accent-hover)',
+        grey: 'var(--color-grey)',
+        faded: 'var(--color-faded)'
       },
       maxWidth: {
         '1/4': '25%',
         '1/2': '50%',
-        '3/4': '75%',
-        'screen-sm': '680px',
-        'screen-lg': '1054px'
+        '3/4': '75%'
       },
     },
   },
@@ -63,32 +70,6 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     plugin(function({ addBase, theme, addUtilities }) {
       addBase({
-        'h1': { 
-          fontSize: theme('fontSize.3xl'), 
-          lineHeight: theme('lineHeight.tight'),
-          fontWeight: theme('fontWeight.black'),
-        },
-        'h2': { 
-          fontSize: theme('fontSize.4xl'),
-          fontWeight: theme('fontWeight.black'),
-          lineHeight: theme('lineHeight.none'),
-        },
-        'h3': { 
-          fontSize: theme('fontSize.lg'),
-          lineHeight: theme('lineHeight.tight'),
-          fontWeight: theme('fontWeight.black'),
-        },
-        'h4': { 
-          fontSize: theme('fontSize.sm'),
-          fontWeight: theme('fontWeight.semibold'),
-          letterSpacing: theme('letterSpacing.widest'),
-          fontFamily: theme('fontFamily.smallHeader'),
-          textTransform: "uppercase",
-          color: theme('colors.accent')
-        },
-        'h5': { 
-          fontFamily: theme('fontFamily.smallHeader'),
-        },
         'p': {
           lineHeight: theme('lineHeight.normal'),
           color: theme('colors.grey')
