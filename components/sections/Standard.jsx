@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types'
 import Image from 'next/image'
-import { PrimaryButton, Socials } from 'components/global'
+import { PrimaryButton, Socials, Video } from 'components/global'
 import Link from 'next/link'
 import { camelSentence } from 'helpers'
 
@@ -47,11 +47,17 @@ const Standard = ({className, fields}) => {
 
       { media && (
         <div className="container max-w-screen-lg mt-16">
-          <Image 
-            src={"https:" + media.fields.file.url}
-            width={media.fields.file.details.image.width}
-            height={media.fields.file.details.image.height}
-          />
+          <div className="m-auto flex justify-center">
+          {
+            media.fields.file.contentType === "video/mp4" 
+              ? <Video file={media.fields.file} />
+              : <Image 
+                  src={"https:" + media.fields.file.url}
+                  width={media.fields.file.details.image.width}
+                  height={media.fields.file.details.image.height}
+                />
+          }
+          </div>
         </div>
       )}
     </section>
