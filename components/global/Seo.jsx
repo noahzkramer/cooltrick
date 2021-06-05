@@ -4,7 +4,11 @@ import { Fragment } from 'react'
 import Head from 'next/head'
 
 // Component
-const Seo = ({ title = '', description = '', image = '', projectName = '9 Realty' }) => {
+const Seo = ({ data }) => {
+  const {
+    title = '', description = '', image = '', projectName = 'CoolTrick™'
+  } = data.fields
+
   const formattedTitle = title.length > 0 ? `${title} - ${projectName}` : projectName
 
   return (

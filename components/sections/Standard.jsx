@@ -23,7 +23,7 @@ const Standard = ({className, fields}) => {
         { documentToReactComponents(body, {
           renderNode: {
             [BLOCKS.PARAGRAPH]: (node, children) => {
-              return <p className="text-lg font-black">{children}</p>
+              return <p className="md:text-lg font-medium md:font-black">{children}</p>
             },
           }
         }) }

@@ -1,13 +1,13 @@
 import { getAllPages, getPage, getGlobals } from "helpers"
 import BlockRenderer from 'components/helpers/BlockRenderer'
-import { Layout } from 'components/global'
+import { Layout, Seo } from 'components/global'
 
 const Page = ({ page, preview, layoutData }) => {
-  // iterable components
-  const { content, topContent } = page.fields
+  const { content, topContent, seo } = page.fields
 
   return (
     <Layout preview={preview} layoutData={layoutData}>
+      <Seo data={seo} />
       <section id="top" className="bg-gradient-to-b from-dark to-light overflow-hidden">
         { topContent.map(block => 
             <BlockRenderer 

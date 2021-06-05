@@ -13,6 +13,8 @@ const HeadComponent = ({ title = '' }) => {
       <meta name="HandheldFriendly" content="true" />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
+      <link rel="shortcut icon" href="/img/favicon-16x16.png" />
+
       <title>{ title }</title>
 
       <link rel="preload" href="https://use.typekit.net/uxa4ysy.css" as="style" />

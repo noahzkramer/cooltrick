@@ -1,23 +1,22 @@
 import { getPage, getGlobals } from 'helpers'
 import BlockRenderer from 'components/helpers/BlockRenderer'
-import { Layout } from 'components/global'
+import { Layout, Seo } from 'components/global'
 
 export default function Home({page, preview, layoutData}) {
-  // iterable components
-  const topBlocks = page.fields.topContent
-  const blocks = page.fields.content
+  const { topContent, content, seo } = page.fields
 
   return (
     <Layout preview={preview} layoutData={layoutData}>
+      <Seo data={seo} />
       <section id="top" className="bg-gradient-to-b from-dark to-light overflow-hidden">
-        { topBlocks.map(block => 
+        { topContent.map(block => 
             <BlockRenderer 
               key={block.sys.id} 
               block={block}
             />
         )}
       </section>
-      { blocks.map(block => 
+      { content.map(block => 
           <BlockRenderer 
             key={block.sys.id} 
             block={block}
