@@ -69,21 +69,19 @@ module.exports = {
     require("tailwindcss-debug-screens"),
     require('@tailwindcss/aspect-ratio'),
     plugin(function({ addBase, theme, addUtilities }) {
-      addBase({
-        'p': {
-          lineHeight: theme('lineHeight.normal'),
-          color: theme('colors.grey')
-        }
-      }),
+      addBase({}),
       addUtilities({
-        '.section-spacing-lg': {
-          'margin-top': '6rem',
-          'margin-bottom': '6rem',
-          'scroll-margin-top': '6rem'
+        '.ss-lg': {
+          'margin-top': '5rem',
+          'margin-bottom': '5rem'
         },
-        '.section-spacing-sm': {
-          'margin-top': '2rem',
-          'margin-bottom': '2rem'
+        '.ss-md': {
+          'margin-top': '4rem',
+          'margin-bottom': '4rem'
+        },
+        '.ss-sm': {
+          'margin-top': '3rem',
+          'margin-bottom': '3rem'
         }
       }, ['responsive'])
     })

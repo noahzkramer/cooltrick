@@ -10,5 +10,6 @@ import { PrimaryButton, PlayButton } from './Buttons'
 import Modal from './Modal'
 import Socials from './Socials'
 import ContactForm from './ContactForm'
+import Video from './Video'
 
-export { Layout, Alert, PrimaryNavigation, MobileNavigation, Header, Head, Footer, PrimaryButton, Modal, Socials, ContactForm, StandardNavigation, PlayButton }
+export { Layout, Alert, PrimaryNavigation, MobileNavigation, Header, Head, Footer, PrimaryButton, Modal, Socials, ContactForm, StandardNavigation, PlayButton, Video }

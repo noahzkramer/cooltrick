@@ -6,6 +6,7 @@ import { PrimaryButton } from 'components/global'
 
 const ContactForm = ({className, fields}) => {
   const [ formData, setFormData ] = useState({})
+  const [ errors, setErrors ] = useState({})
   const {
     formFields = [],
     name = "",
@@ -27,6 +28,27 @@ const ContactForm = ({className, fields}) => {
       SUBJECT: subject,
     }
 
+    // validations
+    for (const field in formData) {
+      switch (field) {
+        case 'Subject':
+          setErrors({
+            ...errors, 
+            [field]: formData[field].length < 5
+              ? 'Full Name must be 5 characters long!'
+              : ''
+          })
+          break;
+        case 'email': 
+          errors.email = 
+            validEmailRegex.test(value)
+              ? ''
+              : 'Email is not valid!';
+          break;
+        default: break;
+      }
+    }
+
     // perform front end validation
     fetch('/api/contact', {
       method: 'POST',
@@ -44,6 +66,7 @@ const ContactForm = ({className, fields}) => {
 
   return (
     <div>
+      {console.log("errors:", errors)}
       <div className="errors"></div>
       <form 
         id={name} 

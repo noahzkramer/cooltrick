@@ -5,11 +5,17 @@ import SVG from 'react-inlinesvg'
 import Link from 'next/link'
 import { useRef, useState, useEffect } from 'react'
 import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 const Header = ({className, navigationData}) => {
+  // register plugin
+  gsap.registerPlugin(ScrollTrigger)
+
   const [ openMobileMenu, setOpenMobileMenu ] = useState(false)
   const mobileNavRef = useRef(null)
+  const headerRef = useRef(null)
   const tl = useRef(null);
+  const tl2 = useRef(null);
   
   useEffect(() => {
     const line1 = mobileNavRef.current.querySelector('span:nth-child(1)')
@@ -21,6 +27,22 @@ const Header = ({className, navigationData}) => {
       .to(line1, { rotate: 45, duration: 0.1 })
       .to(line2, { rotate: -45, duration: 0.1 }, "-=0.1")
 
+    tl2.current = gsap.timeline({}).pause()
+      .to(headerRef.current, { yPercent: -100, opacity: 0, ease: "linear", duration: 0.3 })
+
+    var timer;
+    ScrollTrigger.create({
+      onUpdate: self => {
+        clearTimeout(timer)
+
+        self.direction === 1
+          ? tl2.current.play()
+          : tl2.current.reverse()
+
+        // show after 1 seconds
+        timer = setTimeout(() => tl2.current.reverse(), 1000)
+      }
+    });
   }, [])
 
   useEffect(() => {
@@ -29,7 +51,7 @@ const Header = ({className, navigationData}) => {
 
   return (
     <>
-      <header className={`${className} fixed z-30 w-full flex items-center pt-4 sm:pt-8 lg:pt-14 px-4 sm:px-8 lg:px-24`}>
+      <header className={`${className} fixed z-30 w-full flex items-center pt-4 sm:pt-8 lg:pt-14 px-4 sm:px-8 lg:px-24`} ref={headerRef}>
         <div className="logo w-24 md:w-36">
           <Link href="/">
             <a>
@@ -41,7 +63,7 @@ const Header = ({className, navigationData}) => {
           <PrimaryNavigation data={navigationData} />
         </span>
         <span className="md:hidden text-white">
-          <button id="test" onClick={() => setOpenMobileMenu(!openMobileMenu)} ref={mobileNavRef}>
+          <button onClick={() => setOpenMobileMenu(!openMobileMenu)} ref={mobileNavRef}>
             <span/>
             <span/>
           </button>

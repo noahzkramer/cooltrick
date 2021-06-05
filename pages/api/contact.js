@@ -12,6 +12,8 @@ export default (req, res) => {
     firstName,
     message,
   } = req.body
+
+  return 
  
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   const msg = {

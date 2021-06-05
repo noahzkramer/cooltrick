@@ -31,7 +31,7 @@ const TextArea = ({fields, setFormData, formData}) => {
   }
 
   return (
-    <div className="w-full shadow-lg relative">
+    <div className="w-full shadow-lg relative flex">
       <textarea 
         className="w-full p-4 pl-12 bg-light rounded-sm"
         value={internalValue}

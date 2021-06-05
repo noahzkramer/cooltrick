@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
 import SVG from 'react-inlinesvg'
-import { Modal, PlayButton } from 'components/global'
+import { Modal, PlayButton, Video } from 'components/global'
 import { useRef, useState } from 'react'
 
 const ContentListCard = ({data, className}) => {
@@ -40,11 +40,15 @@ const ContentListCard = ({data, className}) => {
         isOpen={isOpen} 
         setIsOpen={setIsOpen}
       >
-        <Image 
-          src={"https:" + file.url}
-          width={file.details.image.width}
-          height={file.details.image.height}
-        />
+        {
+          file.contentType === "video/mp4" 
+            ? <Video file={file} />
+            : <Image 
+                src={"https:" + file.url}
+                width={file.details.image.width}
+                height={file.details.image.height}
+              />
+        }
       </Modal>
     </article>
   ) 

@@ -17,7 +17,7 @@ const Standard = ({className, fields}) => {
   } = fields
 
   return (
-    <section id={camelSentence(heading)} className={`${className} section-spacing-lg has-bg ${backgroundColor}`}>
+    <section id={camelSentence(heading)} className={`${className} ss-sm md:ss-md lg:ss-lg has-bg ${backgroundColor}`}>
       <div className="text-center container max-w-screen-sm">
         {heading && <h2 className="mb-8">{heading}</h2>}
         { documentToReactComponents(body, {

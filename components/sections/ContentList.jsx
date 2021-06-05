@@ -9,7 +9,7 @@ const ContentList = ({className, id, fields}) => {
   } = fields
 
   return (
-    <section id={id} className={`${className} section-spacing-lg`}>
+    <section id={id} className={`${className} ss-sm md:ss-md lg:ss-lg`}>
       <div className="container max-w-screen-lg">
         <h2 className="text-center mb-8">{heading}</h2>
         <div>
