@@ -7,7 +7,7 @@ import SVG from 'react-inlinesvg'
 
 const ContactForm = ({className, fields}) => {
   const [ formData, setFormData ] = useState({})
-  const [ formState, setFormState ] = useState('error')
+  const [ formState, setFormState ] = useState('')
   const [ errors, setErrors ] = useState({})
   const {
     formFields = [],
