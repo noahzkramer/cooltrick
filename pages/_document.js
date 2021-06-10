@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
         </Head>
-        <body className="debug-screens bg-dark">
+        <body className="bg-dark">
           <Main />
           <NextScript />
         </body>

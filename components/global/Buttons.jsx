@@ -2,9 +2,9 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 
-export const PrimaryButton = styled(({className, color = 'white', children, type = false}) => {
+export const PrimaryButton = styled(({className, color = 'white', children, type = false, onClick}) => {
   return (
-    <button type={type} className={`${className} bg-accent relative py-3.5 px-14 rounded-sm font-tiny`}>
+    <button onClick={onClick} type={type} className={`${className} bg-accent relative py-3.5 px-14 rounded-sm font-tiny`}>
       <span className={`color-${color}`}>
         {children}
       </span>

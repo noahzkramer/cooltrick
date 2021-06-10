@@ -10,16 +10,16 @@ export default (req, res) => {
     SENDTO,
     SUBJECT,
     firstName,
-    message,
+    Message,
   } = req.body
  
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   const msg = {
-    to: SENDTO,
-    from: FROM, // Change to your verified sender
+    to: FROM,
+    from: SENDTO, // Change to your verified sender
     subject: SUBJECT,
-    text: message,
-    html: message,
+    text: Message,
+    html: Message,
   }
 
   sgMail
@@ -29,6 +29,7 @@ export default (req, res) => {
       console.log('Email sent')
     })
     .catch((error) => {
+      res.json({ success: false })
       console.error(error)
     })
 

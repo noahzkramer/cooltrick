@@ -2,10 +2,12 @@
 import styled from 'styled-components'
 import FormRenderer from 'components/helpers/FormRenderer'
 import { useState } from 'react'
-import { PrimaryButton } from 'components/global'
+import { PrimaryButton, Modal } from 'components/global'
+import SVG from 'react-inlinesvg'
 
 const ContactForm = ({className, fields}) => {
   const [ formData, setFormData ] = useState({})
+  const [ formState, setFormState ] = useState('error')
   const [ errors, setErrors ] = useState({})
   const {
     formFields = [],
@@ -58,16 +60,73 @@ const ContactForm = ({className, fields}) => {
       body: JSON.stringify(data)
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data)
+        if (data.success) setFormState('success')
+        if (!data.success) setFormState('error')
+      })
+      .catch((error) => setFormState('error'))
 
     // update success 
     console.log('submit')
   }
 
   return (
-    <div>
-      {console.log("errors:", errors)}
+    <div className="relative">
       <div className="errors"></div>
+      
+        <Modal 
+          isOpen={formState !== ''} 
+          setIsOpen={() => setFormState('')}
+        >
+          {
+            formState === 'success' && (
+              <div className="w-80">
+                <div className="aspect-w-9 aspect-h-12 z-10 ">
+                  <div className="h-full flex flex-col rounded-lg overflow-hidden ">
+                    <div className="bg-green-500 flex-1 flex items-center justify-center">
+                      <span className="icon text-center w-20">
+                        <SVG src="/svg/check-circle-regular.svg" className="w-full" />
+                      </span>
+                    </div>
+                    <div className="bg-white flex-1 flex items-center justify-center">
+                      <div className="text-center p-10">
+                        <p class="mb-6">Thanks for reaching out. <br/>We will be in touch shortly!</p>
+                        <PrimaryButton onClick={() => setFormState('')}>
+                          Continue
+                        </PrimaryButton>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+          {
+            formState === 'error' && (
+              <div className="w-80">
+                <div className="aspect-w-9 aspect-h-12 z-10 ">
+                  <div className="h-full flex flex-col rounded-lg overflow-hidden ">
+                    <div className="bg-red-500 flex-1 flex items-center justify-center">
+                      <span className="icon text-center w-20">
+                        <SVG src="/svg/times-circle-regular.svg" className="w-full" />
+                      </span>
+                    </div>
+                    <div className="bg-white flex-1 flex items-center justify-center">
+                      <div className="text-center p-10">
+                        <p class="mb-6">Error. Please fill out all fields.</p>
+                        <PrimaryButton onClick={() => setFormState('')}>
+                          Continue
+                        </PrimaryButton>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+          
+        </Modal>
       <form 
         id={name} 
         className={`${className}`} 

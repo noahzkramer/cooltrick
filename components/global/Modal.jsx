@@ -10,7 +10,7 @@ const Modal = ({ className, children, isOpen, setIsOpen }) => {
           <div className="top-0 right-0 absolute p-8 md:p-10 z-10">
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-white"
+              className="text-white close-button"
             >
               <span/>
               <span/>
@@ -26,7 +26,7 @@ const Modal = ({ className, children, isOpen, setIsOpen }) => {
 }
 
 export default styled(Modal)`
-& button {
+& .close-button {
   height: 30px;
   position: relative;
   transition: transform 0.3s;
