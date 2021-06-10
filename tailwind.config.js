@@ -5,7 +5,7 @@ module.exports = {
     enabled: process.env.NODE_ENV === 'production',
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     options: {
-      safelist: ['bg-med']
+      safelist: ['bg-med', 'flex-shrink-0']
     }
   },
   darkMode: false, // or 'media' or 'class'
