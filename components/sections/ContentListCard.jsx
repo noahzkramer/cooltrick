@@ -17,17 +17,19 @@ const ContentListCard = ({data, className}) => {
   const [ isOpen, setIsOpen ] = useState(false)
 
   return (
-    <article className={`${className} flex flex-wrap shadow-lg bg-light rounded-lg mb-10 last:mb-0 md:even:flex-row-reverse`}>
-      <div className="content px-6 py-6 lg:p-14 md:max-w-1/2 order-2 md:order-0">
-        <h4>{category}</h4>
-        <h3 className="my-5 md:mt-10 md:mb-8 text-xl">{name}</h3>
-        {documentToReactComponents(bio)}
-        <div className="mt-10 font-black">
-          <PlayButton setIsOpen={setIsOpen} />
+    <>
+    <article className={`${className} flex flex-wrap shadow-lg bg-light rounded-lg relative`}>
+      <div className="content px-6 py-6 lg:p-14 absolute z-10 bg-dark bg-opacity-90 h-full w-full text-center flex items-center opacity-0 transition duration-500">
+        <div className="max-w-md m-auto">
+          <h3 className="mb-5 md:mb-8 text-xl">{name}</h3>
+          {documentToReactComponents(bio)}
+          <div className="mt-10 font-black flex justify-center">
+            <PlayButton setIsOpen={setIsOpen} />
+          </div>
         </div>
       </div>
-      <div className="flex w-full md:max-w-1/2">
-        <div className="relative md:m-4 overflow-hidden w-full rounded-t-lg md:rounded-lg aspect-w-16 aspect-h-13">
+      <div className="flex w-full">
+        <div className="relative overflow-hidden w-full rounded-lg aspect-w-10 aspect-h-16 md:aspect-w-16 md:aspect-h-11">
           <Image 
             src={"https:" + thumbnail.fields.file.url}
             layout="fill"
@@ -35,8 +37,9 @@ const ContentListCard = ({data, className}) => {
           />
         </div>
       </div>
-
-      <Modal 
+    </article>
+    
+    <Modal 
         isOpen={isOpen} 
         setIsOpen={setIsOpen}
       >
@@ -50,20 +53,10 @@ const ContentListCard = ({data, className}) => {
               />
         }
       </Modal>
-    </article>
+    </>
   ) 
 }
 
 export default styled(ContentListCard)`
-  &:nth-child(2n+1) {
-    .content {
-      border-right: 1px solid var(--color-primary-dark);
-    }
-  }
 
-  &:nth-child(2n) {
-    .content {
-      border-left: 1px solid var(--color-primary-dark);
-    }
-  }
 `

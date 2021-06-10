@@ -48,6 +48,10 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
     },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'dark': '#050505',
+    }),
     extend: {
       colors: {
         dark: 'var(--color-primary-dark)',

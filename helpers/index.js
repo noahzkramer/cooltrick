@@ -4,6 +4,6 @@ import initClient from './contentfulClient'
 import getNavigation from './getNavigation'
 import getGlobals from './getGlobals'
 import { camelSentence } from './camelCase'
+import getArtistsBySeries from './getArtistsBySeries'
 
-
-export { getPage, getAllPages, initClient, getNavigation, getGlobals, camelSentence }
+export { getPage, getAllPages, initClient, getNavigation, getGlobals, camelSentence, getArtistsBySeries }

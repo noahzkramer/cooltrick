@@ -1,23 +1,26 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import { ClientOnlyPortal } from 'components/global'
 
 const Modal = ({ className, children, isOpen, setIsOpen }) => {
   return (
     isOpen && (
-      <div className={`${className} w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-90 z-50`} role="dialog">
-        <div className="top-0 right-0 absolute p-8 md:p-10 z-10">
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="text-white"
-          >
-            <span/>
-            <span/>
-          </button>
+      <ClientOnlyPortal selector="body">
+        <div className={`${className} w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-90 z-50`} role="dialog">
+          <div className="top-0 right-0 absolute p-8 md:p-10 z-10">
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="text-white"
+            >
+              <span/>
+              <span/>
+            </button>
+          </div>
+          <div className="container flex h-screen items-center justify-center py-10">
+            {children}
+          </div>
         </div>
-        <div className="container flex h-screen items-center justify-center py-10">
-          {children}
-        </div>
-      </div>
+      </ClientOnlyPortal>
     )
   )
 }

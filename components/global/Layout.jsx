@@ -5,7 +5,7 @@ import { createContext } from 'react'
 export const GlobalContext = createContext({})
 
 const Layout = ({children, preview, layoutData}) => {
-  const { globals } = layoutData
+  const { globals, artists } = layoutData
 
   const {
     footerDisclaimer,
@@ -19,7 +19,7 @@ const Layout = ({children, preview, layoutData}) => {
   }
 
   return (
-    <GlobalContext.Provider value={globals.fields}>
+    <GlobalContext.Provider value={{...globals.fields, artists}}>
       <Header navigationData={primaryNavigation}/>
       <main role="main">
         { preview && <Alert/> }

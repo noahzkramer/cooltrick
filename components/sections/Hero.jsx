@@ -11,6 +11,7 @@ const Hero = ({className, fields}) => {
     primary_heading,
     secondary_header,
     ctaText,
+    ctaLink,
   } = fields
 
   return (
@@ -32,7 +33,7 @@ const Hero = ({className, fields}) => {
         {
           ctaText && (
             <div className="block mt-10">
-              <Link href={'/'}>
+              <Link href={ctaLink}>
                 <a>
                   <PrimaryButton>{ctaText}</PrimaryButton>
                 </a>

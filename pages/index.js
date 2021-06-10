@@ -1,4 +1,4 @@
-import { getPage, getGlobals } from 'helpers'
+import { getPage, getGlobals, getArtistsBySeries } from 'helpers'
 import BlockRenderer from 'components/helpers/BlockRenderer'
 import { Layout, Seo } from 'components/global'
 
@@ -33,6 +33,7 @@ export async function getStaticProps({ preview = false }) {
   }
 
   const page = await getPage(params, preview)
+  const artists = await getArtistsBySeries(1, preview)
   
   // get global data
   const globals = await getGlobals({ 'fields.name': 'Global' })
@@ -45,10 +46,11 @@ export async function getStaticProps({ preview = false }) {
   const layoutData = {
     globals,
     navigation,
-    footer
+    footer,
+    artists,
   }
 
   return { 
-    props: { page, preview, layoutData } 
+    props: { page, preview, layoutData, artists } 
   }
 }
