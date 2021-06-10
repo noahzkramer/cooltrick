@@ -31,10 +31,13 @@ const ContentList = ({className, id, fields}) => {
       <div className="container max-w-screen-lg mb-5 md:mb-11 text-center">
         <h2 className="text-center">{heading}</h2>
 
-        <select id="seriesSelector" class="text-accent bg-transparent pr-10 uppercase tracking-widest border-b border-accent mt-5 md:mt-11 text-tiny">
-          <option value="1">Series 1</option>
-          {/* <option value="2">Series 2</option> */}
-        </select>
+        <div className="relative border-b border-accent inline-block px-1">
+          <select id="seriesSelector" class="text-accent bg-transparent pr-10 uppercase tracking-widest mt-5 md:mt-11 text-tiny appearance-none rounded-none focus:outline-none cursor-pointer">
+            <option value="1">Series 1</option>
+            {/* <option value="2">Series 2</option> */}
+          </select>
+          <span className="toggle absolute right-1"/>
+        </div>
       </div>
       
       <div className="overflow-hidden pb-10 -mb-10">
@@ -95,6 +98,13 @@ export default styled(ContentList)`
         opacity: 1;
       }
     }
+  }
+
+  .toggle {
+    border-color: transparent;
+    border-width: 4px;
+    border-top-color: var(--color-accent);
+    bottom: calc(0.5rem - 2px);
   }
 }
 `

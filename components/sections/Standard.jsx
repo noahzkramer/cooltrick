@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { nodeOptions } from 'lib/constants'
 import { BLOCKS } from '@contentful/rich-text-types'
 import Image from 'next/image'
 import { PrimaryButton, Socials, Video } from 'components/global'
@@ -21,7 +22,9 @@ const Standard = ({className, fields}) => {
       <div className="text-center container max-w-screen-sm">
         {heading && <h2 className="mb-8">{heading}</h2>}
         { documentToReactComponents(body, {
+          ...nodeOptions,
           renderNode: {
+            ...nodeOptions.renderNode,
             [BLOCKS.PARAGRAPH]: (node, children) => {
               return <p className="md:text-lg font-medium md:font-black">{children}</p>
             },
