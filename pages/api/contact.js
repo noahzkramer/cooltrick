@@ -12,11 +12,13 @@ export default (req, res) => {
     firstName,
     Message,
   } = req.body
+
+  console.log("from:", FROM)
  
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   const msg = {
-    to: FROM,
-    from: SENDTO, // Change to your verified sender
+    to: SENDTO,
+    from: FROM, // Change to your verified sender
     subject: SUBJECT,
     text: Message,
     html: Message,

@@ -18,6 +18,8 @@ const ContactForm = ({className, fields}) => {
     submitText = "Submit"
   } = fields  
 
+  console.log(from)
+
   // on form submit
   const handleSubmit = (e) => {
     e.preventDefault()
