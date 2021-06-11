@@ -18,19 +18,19 @@ const ContactForm = ({className, fields}) => {
     submitText = "Submit"
   } = fields  
 
-  console.log(from)
-
   // on form submit
   const handleSubmit = (e) => {
     e.preventDefault()
 
     // add constants to form data
     const data = {
-      ...formData,
+      formData,
       FROM: from,
       SENDTO: sendTo,
       SUBJECT: subject,
     }
+
+    console.log(formData)
 
     // validations
     for (const field in formData) {

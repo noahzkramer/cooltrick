@@ -9,11 +9,12 @@ export default (req, res) => {
     FROM,
     SENDTO,
     SUBJECT,
-    firstName,
-    Message,
   } = req.body
 
-  console.log("from:", FROM)
+  let Message = ''
+  for (const property in req.body.formData) {
+    Message += `<strong>${property}:</strong>  ${req.body.formData[property]} <br><br>`;
+  }
  
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   const msg = {
