@@ -86,7 +86,7 @@ const ContactForm = ({className, fields}) => {
               <div className="w-80">
                 <div className="aspect-w-9 aspect-h-12 z-10 ">
                   <div className="h-full flex flex-col rounded-lg overflow-hidden ">
-                    <div className="bg-green-500 flex-1 flex items-center justify-center">
+                    <div className="bg-light flex-1 flex items-center justify-center">
                       <span className="icon text-center w-20">
                         <SVG src="/svg/check-circle-regular.svg" className="w-full" />
                       </span>
@@ -109,7 +109,7 @@ const ContactForm = ({className, fields}) => {
               <div className="w-80">
                 <div className="aspect-w-9 aspect-h-12 z-10 ">
                   <div className="h-full flex flex-col rounded-lg overflow-hidden ">
-                    <div className="bg-red-500 flex-1 flex items-center justify-center">
+                    <div className="bg-light flex-1 flex items-center justify-center">
                       <span className="icon text-center w-20">
                         <SVG src="/svg/times-circle-regular.svg" className="w-full" />
                       </span>
