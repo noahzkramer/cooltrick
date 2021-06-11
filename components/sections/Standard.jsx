@@ -14,11 +14,12 @@ const Standard = ({className, fields}) => {
     ctaText,
     includeSocialMediaIcons = false,
     media = false,
-    backgroundColor = 'bg-dark'
+    backgroundColor = 'bg-dark',
+    classes = []
   } = fields
 
   return (
-    <section id={camelSentence(heading)} className={`${className} ss-sm md:ss-md lg:ss-lg has-bg ${backgroundColor}`}>
+    <section id={camelSentence(heading)} className={`${className} ss-sm md:ss-md lg:ss-lg has-bg ${backgroundColor} ${[...classes]}`}>
       <div className="text-center container max-w-screen-sm">
         {heading && <h2 className="mb-8">{heading}</h2>}
         { documentToReactComponents(body, {
@@ -68,5 +69,9 @@ const Standard = ({className, fields}) => {
 }
 
 export default styled(Standard)`
-  
+  &.roadmap {
+    h2 {
+      margin-bottom: 3rem;
+    }
+  }
 `

@@ -99,3 +99,29 @@ p:not(:last-of-type) {
 .has-bg + .has-bg {
   margin-top: -5rem;
 }
+
+table {
+  text-align: left;
+  margin: 2rem 0;
+  @apply text-base;
+}
+
+@screen md {
+  table {
+    @apply text-lg;
+  }
+}
+
+table td {
+  vertical-align: top;
+  color: var(--color-grey);
+}
+
+table td strong {
+  color: white;
+}
+
+table tr td:first-of-type {
+  white-space: nowrap;
+  padding-right: 1rem;
+}
