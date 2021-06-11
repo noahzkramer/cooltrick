@@ -17,11 +17,10 @@ const PrimaryNavigation = ({data, className}) => {
 
       if (element) {
         // Smooth scroll to that elment
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest',
-        });
+        const yOffset = -150; 
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({top: y, behavior: 'smooth'});
       }
     }
   }
