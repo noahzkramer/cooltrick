@@ -30,8 +30,6 @@ const ContactForm = ({className, fields}) => {
       SUBJECT: subject,
     }
 
-    console.log(formData)
-
     // validations
     for (const field in formData) {
       switch (field) {

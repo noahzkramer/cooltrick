@@ -2,26 +2,6 @@ import { FormFieldTypes } from 'lib/constants'
 import { useState } from 'react'
 import SVG from 'react-inlinesvg'
 
-const FormRenderer = ({ item, setFormData, formData }) => {
-  const contentTypeId = item.fields.type;
-  const Component = FormFieldMap[contentTypeId];
-
-  if (!Component) {
-    console.warn(`${contentTypeId} can not be handled`);
-    return null;
-  }
-
-  const { id } = item.sys;
-
-  const componentProps = {
-    ...item, // field data from item
-    setFormData, // function to set form data
-    formData // existing form data to duplicate
-  };
-
-  return <Component key={`${contentTypeId}-${id}`} {...componentProps} />;
-};
-
 // create possible fields
 const TextArea = ({fields, setFormData, formData}) => {
   const [ internalValue, setInternalValue ] = useState('')
@@ -71,11 +51,32 @@ const Text = ({fields, setFormData, formData}) => {
   )
 }
 
-// map the components to constants
-const FormFieldMap = {
-  [FormFieldTypes.TextArea]: TextArea,
-  [FormFieldTypes.Text]: Text,
-  [FormFieldTypes.Email]: Text,
+
+const FormRenderer = ({ item, setFormData, formData }) => {
+  // map the components to constants
+  const FormFieldMap = {
+    [FormFieldTypes.TextArea]: TextArea,
+    [FormFieldTypes.Text]: Text,
+    [FormFieldTypes.Email]: Text,
+  };
+
+  const contentTypeId = item.fields.type;
+  const Component = FormFieldMap[contentTypeId];
+
+  if (!Component) {
+    console.warn(`${contentTypeId} can not be handled`);
+    return null;
+  }
+
+  const { id } = item.sys;
+
+  const componentProps = {
+    ...item, // field data from item
+    setFormData, // function to set form data
+    formData // existing form data to duplicate
+  };
+
+  return <Component key={`${contentTypeId}-${id}`} {...componentProps} />;
 };
 
 export default FormRenderer
